@@ -1,9 +1,11 @@
-package com.automationpractice.test.pages;
+package com.SFAutomationDemo.test.pages;
 
 
-import com.automationpractice.test.common.CommanFunction;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+
+import com.SFAutomationDemo.test.common.CommonFunction;
+
 import utilities.ExcelUtils;
 
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Neeraj on 26-11-2016.
  */
-public class MyAccountPage extends CommanFunction {
+public class MyAccountPage extends CommonFunction {
 
     //WebDriver driver;
 
@@ -20,7 +22,7 @@ public class MyAccountPage extends CommanFunction {
         //this.driver = driver;
     }
 
-    static Logger log = Logger.getLogger(CreateAccountPage.class.getName());
+    static Logger log = Logger.getLogger(CreateOpptyPage.class.getName());
     private static final By authenticateMyAccount = By.cssSelector(".navigation_page");
     private static final By signOutButton = By.linkText("Sign out");
     private static final By customerName = By.xpath(".//*[@class='account']/span");
@@ -115,7 +117,7 @@ public class MyAccountPage extends CommanFunction {
 
         String userName = null;
         try {
-            CommanFunction.loadTestDataFile();
+            CommonFunction.loadTestDataFile();
             userName = ExcelUtils.getCellData(6, 0);
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,7 +192,7 @@ public class MyAccountPage extends CommanFunction {
      * @throws Exception
      */
     public String womenToolTip() throws Exception {
-        CommanFunction.loadTestDataFile();
+        CommonFunction.loadTestDataFile();
         String toolTip = ExcelUtils.getCellData(1, 0);
         log.info("Tooltip for womenToolTip function is :-  " + toolTip);
         return toolTip;
@@ -203,7 +205,7 @@ public class MyAccountPage extends CommanFunction {
      * @throws Exception
      */
     public String tShirtsToolTip() throws Exception {
-        CommanFunction.loadTestDataFile();
+        CommonFunction.loadTestDataFile();
         String toolTip = ExcelUtils.getCellData(2, 0);
         log.info("Tooltip for tShirtsToolTip function from test data is :-  " + toolTip);
         return toolTip;

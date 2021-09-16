@@ -5,14 +5,16 @@ package utilities;
  */
 
 import java.io.FileInputStream;
-import com.automationpractice.test.common.CommanFunction;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 
-public class ExcelUtils extends CommanFunction {
+import com.SFAutomationDemo.test.common.CommonFunction;
+
+public class ExcelUtils extends CommonFunction {
 
         private static XSSFSheet ExcelWSheet;
 

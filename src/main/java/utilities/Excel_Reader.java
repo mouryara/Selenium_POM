@@ -1,11 +1,12 @@
 package utilities;
 
-import com.automationpractice.test.common.CommanFunction;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.SFAutomationDemo.test.common.CommonFunction;
 
 import java.io.FileInputStream;
 
@@ -13,7 +14,7 @@ import java.io.FileInputStream;
  * Created by neeraj.bhatnagar on 1/16/2017.
  * https://www.youtube.com/watch?v=2vaVbnL-4iQ&t=128s
  */
-public class Excel_Reader extends CommanFunction {
+public class Excel_Reader extends CommonFunction {
     public String path;
 
     private FileInputStream fis;

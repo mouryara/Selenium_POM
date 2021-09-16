@@ -1,6 +1,5 @@
-package com.automationpractice.test.common;
+package com.SFAutomationDemo.test.common;
 
-import com.automationpractice.test.pages.CreateAccountPage;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
@@ -10,7 +9,6 @@ import org.openqa.selenium.html5.ApplicationCache;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.html5.ApplicationCache;
 import org.openqa.selenium.interactions.Actions;
-import com.automationpractice.test.pages.LoginPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -19,6 +17,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.SFAutomationDemo.test.pages.CreateOpptyPage;
+import com.SFAutomationDemo.test.pages.LoginPage;
+
 import utilities.ExcelUtils;
 import utilities.Excel_Reader;
 
@@ -33,10 +35,10 @@ import static org.openqa.selenium.remote.CapabilityType.*;
 /**
  * Created by neeraj.bhatnagar on 11/22/2016.
  */
-public class CommanFunction {
+public class CommonFunction {
     //public static WebDriver driver=null;
 
-    static Logger log = Logger.getLogger(CreateAccountPage.class.getName());
+    static Logger log = Logger.getLogger(CreateOpptyPage.class.getName());
     public static WebDriver driver;
     protected static int waitForElementPresentTimeout = 40;
     //private static String appURL = "http://automationpractice.com/index.php";
@@ -48,10 +50,10 @@ public class CommanFunction {
 
 
 
-    public CommanFunction() {
+    public CommonFunction() {
     }
 
-    public CommanFunction(WebDriver driver) {
+    public CommonFunction(WebDriver driver) {
         this.driver = driver;
     }
 

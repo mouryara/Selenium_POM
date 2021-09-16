@@ -1,18 +1,19 @@
-package com.automationpractice.test.pages;
+package com.SFAutomationDemo.test.pages;
 
 
-import com.automationpractice.test.common.CommanFunction;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.SFAutomationDemo.test.common.CommonFunction;
+
 import java.io.IOException;
 
 /**
- * Created by neeraj.bhatnagar on 11/23/2016.
+ * Created by Ramesh Mourya.
  */
-public class LoginPage extends CommanFunction {
+public class LoginPage extends CommonFunction {
 
     //WebDriver driver;
 
@@ -24,7 +25,7 @@ public class LoginPage extends CommanFunction {
     /*
     All locator will be defined underneath.
      */
-    static Logger log = Logger.getLogger(CreateAccountPage.class.getName());
+    static Logger log = Logger.getLogger(CreateOpptyPage.class.getName());
     //private static final By selectCreateAccount = By.xpath(".//*[@id='username']");
     //private static final By provideEmailToCreateAccount = By.xpath(".//*[@id='email_create']");
     private static final By userName = By.xpath(".//*[@id='username']");

@@ -1,9 +1,10 @@
-package com.automationpractice.test.testcases;
+package com.SFAutomationDemo.test.testcases;
 
-import com.automationpractice.test.common.CommanFunction;
-import com.automationpractice.test.pages.CreateAccountPage;
-import com.automationpractice.test.pages.LoginPage;
-import com.automationpractice.test.pages.MyAccountPage;
+import com.SFAutomationDemo.test.common.CommonFunction;
+import com.SFAutomationDemo.test.pages.CreateOpptyPage;
+import com.SFAutomationDemo.test.pages.LoginPage;
+import com.SFAutomationDemo.test.pages.MyAccountPage;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
@@ -27,12 +28,12 @@ public class TC004_MyAccount {
     // HomePage homePage;
     LoginPage loginPage;
     MyAccountPage myAccountPage;
-    CommanFunction commanFunction;
+    CommonFunction commanFunction;
 
     @BeforeClass
     public void setUp() throws IOException, InterruptedException {
 
-        commanFunction = new CommanFunction(driver);
+        commanFunction = new CommonFunction(driver);
         loginPage = commanFunction.clickSignInButton();
         myAccountPage = loginPage.successFulLogin();
         DOMConfigurator.configure("src/test/log4j.xml");

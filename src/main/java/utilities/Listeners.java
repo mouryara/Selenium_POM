@@ -1,7 +1,8 @@
 package utilities;
 
-import com.automationpractice.test.common.CommanFunction;
-import com.automationpractice.test.pages.CreateAccountPage;
+import com.SFAutomationDemo.test.common.CommonFunction;
+import com.SFAutomationDemo.test.pages.CreateOpptyPage;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
@@ -13,9 +14,9 @@ import java.io.IOException;
 /**
  * Created by neeraj.bhatnagar on 12/19/2016.
  */
-public class Listeners extends CommanFunction implements ITestListener{
+public class Listeners extends CommonFunction implements ITestListener{
 
-    static Logger log = Logger.getLogger(CreateAccountPage.class.getName());
+    static Logger log = Logger.getLogger(CreateOpptyPage.class.getName());
 
     public Listeners() {
     }
@@ -44,7 +45,7 @@ public class Listeners extends CommanFunction implements ITestListener{
 
         String methodName = result.getName().toString().trim();
         try {
-            CommanFunction.captureScreenshot(methodName);
+            CommonFunction.captureScreenshot(methodName);
             log.info("Method"+" "+methodName+" "+"Failed.Please see screenshot in Screenshots folder");
         } catch (IOException e) {
             e.printStackTrace();

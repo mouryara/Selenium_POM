@@ -1,12 +1,14 @@
-package com.automationpractice.test.testcases;
+package com.SFAutomationDemo.test.testcases;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import com.automationpractice.test.common.CommanFunction;
-import com.automationpractice.test.pages.LoginPage;
-import com.automationpractice.test.pages.MyAccountPage;
+
+import com.SFAutomationDemo.test.common.CommonFunction;
+import com.SFAutomationDemo.test.pages.LoginPage;
+import com.SFAutomationDemo.test.pages.MyAccountPage;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,24 +21,24 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
- * Created by Neeraj on 27-11-2016.
+ * Salesforce Automation demo exercise.
  */
-public class TC003_Login {
+public class TC001_Login {
 
     WebDriver driver;
     // HomePage homePage;
     LoginPage loginPage;
     MyAccountPage myAccountPage;
-    CommanFunction commanFunction;
+    CommonFunction commonFunction;
 
     //public static final By signOutButton = By.linkText("Sign out");
-    private String customerName = "Neeraj Bhatngar";
+    //private String userName = "Ramesh Mourya";
 
     @BeforeClass
     public void setUp() throws IOException, InterruptedException {
 
-        commanFunction = new CommanFunction(driver);
-        loginPage = commanFunction.clickSignInButton();
+        commonFunction = new CommonFunction(driver);
+        loginPage = commonFunction.clickSignInButton();
         //myAccountPage = loginPage.successFulLogin();
         DOMConfigurator.configure("src/test/log4j.xml");
     }
@@ -87,18 +89,18 @@ public class TC003_Login {
 
     /*@Test(priority = 1, dependsOnMethods = {"successFulLogin"} )
     public void verifyUserName(){
-       // myAccountPage.getCustomerName();
-        //assertEquals(customerName, myAccountPage.getCustomerName());
-        assertEquals( myAccountPage.userNameValue, myAccountPage.getCustomerName(), "User name value do not match.Please check test again." );
+       // myAccountPage.getuserName();
+        //assertEquals(userName, myAccountPage.getuserName());
+        assertEquals( myAccountPage.userNameValue, myAccountPage.getuserName(), "User name value do not match.Please check test again." );
         // Can be writtten as with assertion
-        //assertEquals(customerName, myAccountPage.getCustomerName(),"" );
+        //assertEquals(userName, myAccountPage.getuserName(),"" );
 
     }*/
 
 
     @AfterClass
     public void tearDown() {
-        commanFunction.closeDriver();
+        commonFunction.closeDriver();
         System.out.println("Driver closed");
     }
 

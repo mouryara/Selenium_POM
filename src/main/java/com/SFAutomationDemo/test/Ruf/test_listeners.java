@@ -1,4 +1,4 @@
-package com.automationpractice.test.Ruf;
+package com.SFAutomationDemo.test.Ruf;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
