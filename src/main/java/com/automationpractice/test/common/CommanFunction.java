@@ -40,7 +40,7 @@ public class CommanFunction {
     public static WebDriver driver;
     protected static int waitForElementPresentTimeout = 40;
     //private static String appURL = "http://automationpractice.com/index.php";
-    private static final By selectSignIn = By.xpath(".//*[@class='login']");
+    private static final By selectSignIn = By.xpath(".//*[@id='Login']");
     //public static final By signOutButton = By.linkText("Sign out");
     static Properties properties;
     public static String mailscreenshotpath;

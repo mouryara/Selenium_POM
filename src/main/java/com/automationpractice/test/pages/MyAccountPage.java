@@ -2,8 +2,6 @@ package com.automationpractice.test.pages;
 
 
 import com.automationpractice.test.common.CommanFunction;
-import com.automationpractice.test.pages.productCategory.DressesCategoryPage;
-import com.automationpractice.test.pages.productCategory.TShirtsCategoryPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import utilities.ExcelUtils;
@@ -37,6 +35,11 @@ public class MyAccountPage extends CommanFunction {
     private static final By wishListButton = By.xpath(".//*[@class='lnk_wishlist']/a/span");
     private static final By tShirtFromHeader = By.xpath(".//*[@id='block_top_menu']/ul/li[3]/a");
     private static final By dressesLink = By.xpath(".//*[@id='block_top_menu']/ul/li[2]/a");
+    
+    
+    //*****************************************
+    
+    private static final By authenticateHome = By.xpath("//div[@class='slds-r5']");
 
 
     //public String userNameValue = getConfigFileData("userNameValue");
@@ -55,7 +58,7 @@ public class MyAccountPage extends CommanFunction {
     public boolean isMyAccountPagePresent() {
        /* boolean isPageExist =  checkPageExistence(signOutButton);
        return isPageExist;*/
-        return checkPageExistence(signOutButton);
+        return checkPageExistence(authenticateHome);
     }
 
     /**
@@ -81,9 +84,9 @@ public class MyAccountPage extends CommanFunction {
 
     public boolean checkMyAccountPageExistence1() {
         //checkPageExistence(signOutButton);
-        checkPageExistence(authenticateMyAccount);
+        checkPageExistence(authenticateHome);
         log.info("Checking if myAccount page is present after login.");
-        return checkPageExistence(signOutButton);
+        return checkPageExistence(authenticateHome);
     }
 
     /*
@@ -206,47 +209,9 @@ public class MyAccountPage extends CommanFunction {
         return toolTip;
     }
 
-    /**
-     * This function will click on TShirts link on mouse hover from women link.
-     */
-    public TShirtsCategoryPage clickTShirtsLink() {
-        clickOnLinkAfterMouseHover(tShirtLink);
-        log.info("User clicked" + tShirtLink + "On TShirtsCategoryPage");
-        return new TShirtsCategoryPage(getDriver());
-    }
 
-    /**
-     * This function will click on TShirts link from header
-     */
-    public TShirtsCategoryPage clickTShirtLinkFromHeader() {
-        waitForElementToBeVisible(tShirtFromHeader);
-        clickOnLocator(tShirtFromHeader);
-        log.info("User clicked" + tShirtFromHeader + "from header");
-        return new TShirtsCategoryPage(getDriver());
-    }
 
-    /**
-     * This function will return Dresses page.
-     */
-    public DressesCategoryPage clickOnDressesLink(){
-        waitForElementToBeVisible(dressesLink);
-        clickOnLocator(dressesLink);
-        log.info("User Clicked Dresses Link from header");
-        return new DressesCategoryPage(getDriver());
-    }
+ 
 
-    /**
-     * This method will click on My Wishlist Page.
-     */
-    public WishListPage clickOnWishListButton() throws NoSuchElementException {
-        try {
-            waitForElementToBeVisible(wishListButton);
-            clickOnLocator(wishListButton);
-            log.info("User clicked " + wishListButton + " button");
-        } catch (ElementNotVisibleException e) {
-            e.getMessage();
-            log.info("Element" + " " + wishListButton + " " + "is not visible.");
-        }
-        return new WishListPage(getDriver());
-    }
+	 
 }

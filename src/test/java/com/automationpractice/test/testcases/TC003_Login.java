@@ -77,7 +77,7 @@ public class TC003_Login {
         // myAccountPage.checkMyAccount();
         if (myAccountPage.isMyAccountPagePresent() == false) {
             //   if (myAccountPage.checkMyAccountPageExistence()) {
-            loginPage.waitForLoginPage();
+            //loginPage.waitForLoginPage();
             loginPage.failedLoginCases();
         } else {
             myAccountPage.clickSignOutButton();
