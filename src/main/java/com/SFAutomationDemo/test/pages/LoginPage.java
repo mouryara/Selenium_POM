@@ -11,7 +11,7 @@ import com.SFAutomationDemo.test.common.CommonFunction;
 import java.io.IOException;
 
 /**
- * Created by Ramesh Mourya.
+ * Created by Neeraj on 26-11-2016.
  */
 public class LoginPage extends CommonFunction {
 
@@ -46,14 +46,22 @@ public class LoginPage extends CommonFunction {
     /*
     This function will enter correct user name & password & logs into application successfully.
      */
-    public MyAccountPage successFulLogin() throws IOException {
+//    public MyAccountPage successFulLogin() throws IOException {
+//        fillValuesInTextBox(userName, validUserName);
+//        fillValuesInTextBox(password, validPassword);
+//        clickOnLocator(signInButton);
+//        log.info("Verify login functionality with valid username & password.");
+//        return new MyAccountPage(driver);
+//    }
+
+    public HomePage successFulLogin() throws IOException {
         fillValuesInTextBox(userName, validUserName);
         fillValuesInTextBox(password, validPassword);
         clickOnLocator(signInButton);
         log.info("Verify login functionality with valid username & password.");
-        return new MyAccountPage(driver);
+        return new HomePage(driver);
     }
-
+    
     /*
     This function is to test failed login scenarios & check error messages.
      */

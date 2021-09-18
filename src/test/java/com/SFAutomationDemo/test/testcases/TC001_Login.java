@@ -7,7 +7,8 @@ import org.testng.annotations.*;
 
 import com.SFAutomationDemo.test.common.CommonFunction;
 import com.SFAutomationDemo.test.pages.LoginPage;
-import com.SFAutomationDemo.test.pages.MyAccountPage;
+import com.SFAutomationDemo.test.pages.HomePage;
+//import com.SFAutomationDemo.test.pages.sfHomePage;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -28,7 +29,7 @@ public class TC001_Login {
     WebDriver driver;
     // HomePage homePage;
     LoginPage loginPage;
-    MyAccountPage myAccountPage;
+    HomePage sfHomePage;
     CommonFunction commonFunction;
 
     //public static final By signOutButton = By.linkText("Sign out");
@@ -39,7 +40,7 @@ public class TC001_Login {
 
         commonFunction = new CommonFunction(driver);
         loginPage = commonFunction.clickSignInButton();
-        //myAccountPage = loginPage.successFulLogin();
+        //sfHomePage = loginPage.successFulLogin();
         DOMConfigurator.configure("src/test/log4j.xml");
     }
 
@@ -49,25 +50,25 @@ public class TC001_Login {
 
     /*@BeforeMethod
     public void naviagtionSetUp(){
-        myAccountPage = loginPage.successFulLogin();
+        sfHomePage = loginPage.successFulLogin();
     }*/
     @Test(priority = 0)
     public void successFulLogin() {
 
         try {
-            myAccountPage = loginPage.successFulLogin(); //successFulLogin is returning myAccount page so we assign it in myAccountPage so that we can use it in next function.
+            sfHomePage = loginPage.successFulLogin(); //successFulLogin is returning myAccount page so we assign it in sfHomePage so that we can use it in next function.
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*myAccountPage.checkMyAccountPageExistence();
-        assertTrue(myAccountPage.isMyAccountPagePresent(), "Login is unsuccessful.");
+        /*sfHomePage.checksfHomePageExistence();
+        assertTrue(sfHomePage.issfHomePagePresent(), "Login is unsuccessful.");
         */
 
-        if (myAccountPage.checkMyAccountPageExistence1()== true){
-            assertTrue(myAccountPage.isMyAccountPagePresent(), "Login is successful.");
+        if (sfHomePage.checkSFHomePageExistence()== true){
+            assertTrue(sfHomePage.isSFHomePagePresent(), "Login is successful.");
 
         } else{
-            assertFalse(myAccountPage.isMyAccountPagePresent(), "Login is unsuccessful");
+            assertFalse(sfHomePage.isSFHomePagePresent(), "Login is unsuccessful");
         }
 
     }
@@ -75,25 +76,25 @@ public class TC001_Login {
     @Test(priority = 2, enabled = false)
     public void failedLogin() throws IOException {
 
-        // myAccountPage.checkMyAccountPageExistence();
-        // myAccountPage.checkMyAccount();
-        if (myAccountPage.isMyAccountPagePresent() == false) {
-            //   if (myAccountPage.checkMyAccountPageExistence()) {
+        // sfHomePage.checksfHomePageExistence();
+        // sfHomePage.checkMyAccount();
+        if (sfHomePage.isSFHomePagePresent() == false) {
+            //   if (sfHomePage.checksfHomePageExistence()) {
             //loginPage.waitForLoginPage();
             loginPage.failedLoginCases();
         } else {
-            myAccountPage.clickSignOutButton();
+            //sfHomePage.clickSignOutButton();
             loginPage.failedLoginCases();
         }
     }
 
     /*@Test(priority = 1, dependsOnMethods = {"successFulLogin"} )
     public void verifyUserName(){
-       // myAccountPage.getuserName();
-        //assertEquals(userName, myAccountPage.getuserName());
-        assertEquals( myAccountPage.userNameValue, myAccountPage.getuserName(), "User name value do not match.Please check test again." );
+       // sfHomePage.getuserName();
+        //assertEquals(userName, sfHomePage.getuserName());
+        assertEquals( sfHomePage.userNameValue, sfHomePage.getuserName(), "User name value do not match.Please check test again." );
         // Can be writtten as with assertion
-        //assertEquals(userName, myAccountPage.getuserName(),"" );
+        //assertEquals(userName, sfHomePage.getuserName(),"" );
 
     }*/
 

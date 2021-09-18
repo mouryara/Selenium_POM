@@ -33,7 +33,8 @@ import static org.openqa.selenium.remote.CapabilityType.*;
 import static org.openqa.selenium.remote.CapabilityType.*;
 
 /**
- * Created by neeraj.bhatnagar on 11/22/2016.
+ * Author: Ramesh Mourya
+ * Description: This class will store all the common methods and 
  */
 public class CommonFunction {
     //public static WebDriver driver=null;
@@ -212,7 +213,7 @@ public class CommonFunction {
      * @param locator
      * @return
      */
-    private WebElement getWebElement(By locator) {
+    protected WebElement getWebElement(By locator) {
         WebElement element;
         //CustomReporter.debug("waitForElementToBeVisible locator (" + locator.toString() + ")");
         WebDriverWait webDriverWait = new WebDriverWait(getDriver(), waitForElementPresentTimeout);
@@ -229,9 +230,8 @@ public class CommonFunction {
     }
 
     /**
-     * This fucntoin will click on child element on a menu which presents on mouse hover
+     * This function will click on child element on a menu which appears on mouse hover
      * MouseHover handling.
-     * Check it with Aditya
      */
 
     public void mouseHover(By locator) {
@@ -303,8 +303,6 @@ public class CommonFunction {
     }
 
     public void closeDriver() {
-        //driver.close();
-        //getDriver().close();
         driver.quit();
     }
 
