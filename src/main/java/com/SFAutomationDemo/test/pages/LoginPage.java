@@ -11,7 +11,8 @@ import com.SFAutomationDemo.test.common.CommonFunction;
 import java.io.IOException;
 
 /**
- * Created by Neeraj on 26-11-2016.
+ * Author: Ramesh Mourya
+ * This class will store all locator & methods of Sales force Login page
  */
 public class LoginPage extends CommonFunction {
 
@@ -26,11 +27,9 @@ public class LoginPage extends CommonFunction {
     All locator will be defined underneath.
      */
     static Logger log = Logger.getLogger(CreateOpptyPage.class.getName());
-    //private static final By selectCreateAccount = By.xpath(".//*[@id='username']");
-    //private static final By provideEmailToCreateAccount = By.xpath(".//*[@id='email_create']");
     private static final By userName = By.xpath(".//*[@id='username']");
     private static final By password = By.xpath(".//*[@id='password']");
-    private static final By signInButton = By.xpath(".//*[@id='Login']");
+    private static final By LoginBtn = By.xpath(".//*[@id='Login']");
 
 
     /*
@@ -57,7 +56,7 @@ public class LoginPage extends CommonFunction {
     public HomePage successFulLogin() throws IOException {
         fillValuesInTextBox(userName, validUserName);
         fillValuesInTextBox(password, validPassword);
-        clickOnLocator(signInButton);
+        clickOnLocator(LoginBtn);
         log.info("Verify login functionality with valid username & password.");
         return new HomePage(driver);
     }
@@ -70,7 +69,7 @@ public class LoginPage extends CommonFunction {
 
         fillValuesInTextBox(userName, invalidUserName);
         fillValuesInTextBox(password, validPassword);
-        clickOnLocator(signInButton);
+        clickOnLocator(LoginBtn);
         log.info("Verify login functionality with invalid username & valid password");
     }
     
@@ -81,7 +80,7 @@ public class LoginPage extends CommonFunction {
     public void failedLoginInvalidUserInvalidPassword() {
         fillValuesInTextBox(userName, invalidUserName);
         fillValuesInTextBox(password, invalidPassword);
-        clickOnLocator(signInButton);
+        clickOnLocator(LoginBtn);
         log.info("Verify login functionality with invalid username & invalid password");
 
     }
@@ -94,7 +93,7 @@ public class LoginPage extends CommonFunction {
     public void failedLoginValidUserInvalidPassword() {
         fillValuesInTextBox(userName, invalidUserName);
         fillValuesInTextBox(password, validPassword);
-        clickOnLocator(signInButton);
+        clickOnLocator(LoginBtn);
         log.info("Verify login functionality with invalid username & valid password");
 
 

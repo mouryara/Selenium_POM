@@ -22,6 +22,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
+ * Author: Ramesh Mourya
  * Salesforce Automation demo exercise.
  */
 public class TC001_Login {

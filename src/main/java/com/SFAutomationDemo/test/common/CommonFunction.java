@@ -34,16 +34,16 @@ import static org.openqa.selenium.remote.CapabilityType.*;
 
 /**
  * Author: Ramesh Mourya
- * Description: This class will store all the common methods and 
+ * Description: This class will store all the common and reusable methods
  */
 public class CommonFunction {
     //public static WebDriver driver=null;
 
-    static Logger log = Logger.getLogger(CreateOpptyPage.class.getName());
+    static Logger log = Logger.getLogger(CommonFunction.class.getName());
     public static WebDriver driver;
     protected static int waitForElementPresentTimeout = 40;
     //private static String appURL = "http://automationpractice.com/index.php";
-    private static final By selectSignIn = By.xpath(".//*[@id='Login']");
+    private static final By Login = By.xpath(".//*[@id='Login']");
     //public static final By signOutButton = By.linkText("Sign out");
     static Properties properties;
     public static String mailscreenshotpath;
@@ -310,7 +310,7 @@ public class CommonFunction {
 
         //WebDriver driver;
         driver = invokeApplication();
-        WebElement element = driver.findElement(selectSignIn);
+        WebElement element = driver.findElement(Login);
         element.click();
         //System.out.println("Sign In button clicked on Home Page.");
         return new LoginPage(driver);

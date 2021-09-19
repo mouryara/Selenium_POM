@@ -11,7 +11,7 @@ import com.SFAutomationDemo.test.common.CommonFunction;
 import java.io.FileInputStream;
 
 /**
- * Created by neeraj.bhatnagar on 1/16/2017.
+ * Author: Ramesh Mourya.
  * https://www.youtube.com/watch?v=2vaVbnL-4iQ&t=128s
  */
 public class Excel_Reader extends CommonFunction {

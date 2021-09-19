@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 //import com.SFAutomationDemo.test.common.*;
 import java.io.IOException;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -73,47 +74,14 @@ public class TC003_SalesHomePage {
     {
     	log.info("Clicking on Opportunity option from Menu");
     	assertTrue(commonFunction.isElementPresent(salesHmPg.opptyMenuOption));
-    	createOppty=salesHmPg.NavigatetoOpptyPage();
+    	salesHmPg.NavigatetoOpptyPage();
+    	//createOppty=salesHmPg.NavigatetoOpptyPage();
     	Thread.sleep(5000);
     	assertTrue(commonFunction.isElementPresent(salesHmPg.opptyPgRecentlyViewed));
     	log.info("Opportunity Page Opens successfully");
     }
 
-    @Test(priority = 3)
-    public void CreateOppty() throws InterruptedException, IOException 
-    {
-    	
-    	assertTrue(salesHmPg.verifyNewBtnExists());
-    	log.info("New Oppty Button present on the page");
-    	Thread.sleep(5000);
-    	salesHmPg.NewOpptyBtnClick();
-    	Thread.sleep(5000);
-    	assertTrue(commonFunction.isElementPresent(salesHmPg.FormTitle));
-    	log.info("New Button clicked and record type selection form opens");
-    	
-    	log.info("Selecting the Oppty record type after toggling it");
-    	//salesHmPg.recordtypeToggle();
-    	salesHmPg.recTypeSelect();
-        Thread.sleep(5000);
-        salesHmPg.fillOpptyData();
-    	Thread.sleep(5000);
-    	salesHmPg.createOppty();
-    	Thread.sleep(5000);
-    	String name = salesHmPg.verifyCreatedOppty();
-    	if(name==salesHmPg.oOpptyName)
-    	{
-    		log.info("Opportunity is successfully created and opened on the page: "+name);;
-    	}
-    	else
-    	{
-    		log.info("There is a problem with the Opportunity creation: "+name);;
-        		
-    	}
-    	
-    }
-    
-    
-    
+	
     @AfterClass
     public void tearDown() {
         commonFunction.closeDriver();

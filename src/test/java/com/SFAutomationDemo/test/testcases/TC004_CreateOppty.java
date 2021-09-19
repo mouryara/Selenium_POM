@@ -34,6 +34,7 @@ public class TC004_CreateOppty {
     SalesHomePage salesHomePage;
     CommonFunction commonFunction;
     SalesHomePage shpg= new SalesHomePage(driver);
+    //CreateOpptyPage createOpptyPage =new CreateOpptyPage(driver);
     CreateOpptyPage createOppty;
     
     private static Logger log = Logger.getLogger(TC004_CreateOppty.class.getName());
@@ -50,20 +51,29 @@ public class TC004_CreateOppty {
         Thread.sleep(5000);
         shpg=home.launchSalesApp();
         log.info("User moved to Sales Home page and now ready for accessing the Oppty page");
+
+		assertTrue(shpg.isOpportunityMenuOptionVisible());
+		log.info("Oppoirtunity Menu option found");
         createOppty=shpg.NavigatetoOpptyPage();
+        log.info("User Navigated to Opportunity page");
         DOMConfigurator.configure("src/test/log4j.xml");
     }
 
     @Test(priority = 1, enabled = true, description = "This test will verify and Click New button for Opportunity creation on Oppty page.")
-    public void clickNewOpptyBtn() {
+    public void clickNewOpptyBtn() throws InterruptedException, IOException {
     	assertTrue(createOppty.verifyNewBtnExists());
     	log.info("New Oppty Button present on the page");
+    	Thread.sleep(5000);
+    	createOppty.NewOpptyBtnClick();
+    	Thread.sleep(5000);
+    	assertTrue(commonFunction.isElementPresent(createOppty.FormTitle));
+    	log.info("New Button clicked and record type selection form opens");
     }
 
     @Test(priority = 2, enabled = true, description = "This test will select the opportunity record type. ")
     public void SelectRecordType() throws InterruptedException, IOException {
         log.info("Selecting the Oppty record type after toggling it");
-        createOppty.recordtypeToggle();
+        createOppty.recTypeSelect();
         Thread.sleep(5000);
         
     }
@@ -77,13 +87,13 @@ public class TC004_CreateOppty {
     	createOppty.createOppty();
     	Thread.sleep(5000);
     	String name = createOppty.verifyCreatedOppty();
-    	if(name==createOppty.oOpptyName)
+    	if(name.toString()==createOppty.oOpptyName.toString())
     	{
-    		log.info("Opportunity is successfully created and opened on the page: "+name);;
+    		log.info("Opportunity is successfully created and opened on the page: "+name+", "+createOppty.oOpptyName.toString());
     	}
     	else
     	{
-    		log.info("There is a problem with the Opportunity creation: "+name);;
+    		log.info("There is a problem with the Opportunity creation: "+name+", "+createOppty.oOpptyName.toString());
         		
     	}
     }
