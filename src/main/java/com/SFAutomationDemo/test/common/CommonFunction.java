@@ -127,7 +127,12 @@ public class CommonFunction {
         waitForElementToBeVisible(locator).sendKeys(textBoxData);
     }
 
-
+    public void fillValuesInTextBox1(By locator, int amt) {
+        String amnt=String.valueOf(amt);
+    	waitForElementToBeVisible(locator).clear();
+        waitForElementToBeVisible(locator).sendKeys(amnt);
+    }
+    
     /**
      * Function to select browser from config file.
      */

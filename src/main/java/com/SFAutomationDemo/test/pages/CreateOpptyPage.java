@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class CreateOpptyPage extends CommonFunction{
     
-    public CreateOpptyPage(WebDriver driver) {
+    public CreateOpptyPage(WebDriver driver) throws IOException {
         super(driver);
         
     }
@@ -85,16 +85,21 @@ public class CreateOpptyPage extends CommonFunction{
       
       
       //Data for opportunity creation
-      private String oAmount="4220";
+      int min=10;
+      int max=60;
       Random rnd=new Random();
+      private int amt=rnd.nextInt(1000)*(max-min+1)+min;
+      private int prob=rnd.nextInt(40);
+      private int oAmount=amt;
+      
       private int cnt=rnd.nextInt(1000);
       public String oOpptyName="TestOppty"+cnt; 
-      private String ClDateValue = "11/25/2021";
-      private String oAcctName="Test Automation";
-      private String oStage="Prospect";
-      private String oType="New Customer";
-      private String oLeadSrc="Web";
-      private String oProbability="10";
+      private String ClDateValue = getConfigFileData("closingDt");
+      private String oAcctName=getConfigFileData("accountNm");
+      private String oStage=getConfigFileData("oStage");
+      private String oType=getConfigFileData("oType");
+      private String oLeadSrc=getConfigFileData("oLeadSrc");
+      private int oProbability=prob;
       
    // Locator for Opportunity Name after creation
       private String newOpptyNm="//lightning-formatted-text[normalize-space()="+"'"+oOpptyName+"']";
@@ -105,7 +110,8 @@ public class CreateOpptyPage extends CommonFunction{
       public void fillOpptyData()
       {
       	log.info( "Opportunity data entries started" );
-      	fillValuesInTextBox(opptyamount,oAmount);
+      	log.info("New amount: "+amt);
+      	fillValuesInTextBox1(opptyamount,amt);
       	fillValuesInTextBox(OpptyName,oOpptyName);
       	fillValuesInTextBox(CloseDate,ClDateValue);
       	
@@ -163,7 +169,7 @@ public class CreateOpptyPage extends CommonFunction{
       	log.info("Lead Source value selected");
       	//selectValueFromPickList(OpptyLeadSource,oLeadSrc);
       	
-      	fillValuesInTextBox(OpptyProbability,oProbability);   	
+      	fillValuesInTextBox1(OpptyProbability,oProbability);   	
       	log.info( "Opportunity data entries Completed" );
       }
       
