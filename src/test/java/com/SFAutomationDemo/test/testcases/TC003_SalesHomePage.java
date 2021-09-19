@@ -58,9 +58,11 @@ public class TC003_SalesHomePage {
     public void VerifySalesHomePage() throws InterruptedException, IOException 
     {
     	salesHmPg.isSalesHomePagePresent();
-    	salesHmPg.isHomeOptionPresent();
-    	salesHmPg.isQtrlyGraphPresent();
     	assertTrue(commonFunction.isElementPresent(salesHmPg.salesHm));
+    	salesHmPg.isHomeOptionPresent();
+    	assertTrue(commonFunction.isElementPresent(salesHmPg.sHome));
+    	salesHmPg.isQtrlyGraphPresent();    	
+    	assertTrue(commonFunction.isElementPresent(salesHmPg.sQtrlyGraph));
     	log.info("Sales Home page is displayed, Home and Quarterly Graph visible");
     	
 
@@ -77,6 +79,39 @@ public class TC003_SalesHomePage {
     	log.info("Opportunity Page Opens successfully");
     }
 
+    @Test(priority = 3)
+    public void CreateOppty() throws InterruptedException, IOException 
+    {
+    	
+    	assertTrue(salesHmPg.verifyNewBtnExists());
+    	log.info("New Oppty Button present on the page");
+    	Thread.sleep(5000);
+    	salesHmPg.NewOpptyBtnClick();
+    	Thread.sleep(5000);
+    	assertTrue(commonFunction.isElementPresent(salesHmPg.FormTitle));
+    	log.info("New Button clicked and record type selection form opens");
+    	
+    	log.info("Selecting the Oppty record type after toggling it");
+    	//salesHmPg.recordtypeToggle();
+    	salesHmPg.recTypeSelect();
+        Thread.sleep(5000);
+        salesHmPg.fillOpptyData();
+    	Thread.sleep(5000);
+    	salesHmPg.createOppty();
+    	Thread.sleep(5000);
+    	String name = salesHmPg.verifyCreatedOppty();
+    	if(name==salesHmPg.oOpptyName)
+    	{
+    		log.info("Opportunity is successfully created and opened on the page: "+name);;
+    	}
+    	else
+    	{
+    		log.info("There is a problem with the Opportunity creation: "+name);;
+        		
+    	}
+    	
+    }
+    
     
     
     @AfterClass

@@ -276,6 +276,21 @@ public class CommonFunction {
         Select select = new Select(element);
         select.selectByValue(dropDownValue);
     }
+    
+    // for selecting a value from the pick list using selectByVisbleText 
+    public void selectValueFromPickList(By locator, String dropDownValue)
+    {
+    	WebElement element = waitForElementToBeVisible(locator);
+        Select select = new Select(element);
+    	select.selectByVisibleText(dropDownValue);
+    }
+    
+    // for scrolling to the element on the page when element is not visible
+    public void scrollToElement(By locator)
+    {
+    	
+    	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
+    }
 
     /*
     This function will return reference of driver to other pages.

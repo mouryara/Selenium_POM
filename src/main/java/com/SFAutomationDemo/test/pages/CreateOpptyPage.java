@@ -30,7 +30,7 @@ public class CreateOpptyPage extends CommonFunction{
     
      
     private static final By opptyPageLabel=By.xpath("//span[@class='slds-var-p-right_x-small']");
-    public static final By NewOpptyBtn=By.xpath("//*[@id=\"brandBand_1\"]/div/div/div/div/div[1]/div[1]/div[2]/ul/li/a/div");
+    public static final By NewOpptyBtn=By.xpath("//div[@title='New']");
     
     //Locator for Record type selection popup
     private static final By recordtypeselection=By.xpath("//*[@id=\"content_1615:0\"]/div/div");
@@ -97,41 +97,48 @@ public class CreateOpptyPage extends CommonFunction{
         return checkPageExistence(FormTitle);
     }
     
-   public void recordtypeToggle()
-   {
-	   log.info("Toggle of selection of Record type");
+    
+    public void recordtypeToggle()
+    {
+    	log.info("Toggle of selection of Record type");
 	   
-	   if(getWebElement(obRecType).isSelected()==true)
-	   {
-		   selectRadioButton(TestRecType);
-		   selectRadioButton(obRecType);
-	   }
-	   else
-	   {
-		   selectRadioButton(obRecType);
-	   }
-	   clickOnLocator(NextBtn);
-	}
+    	if(getWebElement(obRecType).isSelected()==true)
+    	{
+    		selectRadioButton(TestRecType);
+    		selectRadioButton(obRecType);
+    	}
+    	else
+    	{
+    		selectRadioButton(obRecType);
+    	}
+    	clickOnLocator(NextBtn);
+    }
    
-   public boolean verifyNewBtnExists()
-   {
-	   log.info("Verifying the presence of New Oportunity button");
-	   return checkPageExistence(NewOpptyBtn);
-   }
+    public boolean verifyNewBtnExists()
+    {
+    	log.info("Verifying the presence of New Oportunity button");
+    	return checkPageExistence(NewOpptyBtn);
+    }
+    
+    public void NewOpptyBtnClick()
+    {
+    	log.info("Clicking New Opportunity Button");
+    	clickOnLocator(NewOpptyBtn);
+    }
        
-   public void createOppty()
-   {
+    public void createOppty()
+    {
 	   clickOnLocator(OpptySavebtn);
 	   
-   }
+    }
 
-   public String verifyCreatedOppty() 
-   {
-	   String opptyNm = getWebElement(OpptyNameLabel).getText();
-	   //return checkPageExistence(OpptyNameLabel);
-	   return opptyNm;
-   }
-
+    public String verifyCreatedOppty() 
+    {
+    	String opptyNm = getWebElement(OpptyNameLabel).getText();
+    	//return checkPageExistence(OpptyNameLabel);
+    	return opptyNm;
+    }
+    
 
 }
 
