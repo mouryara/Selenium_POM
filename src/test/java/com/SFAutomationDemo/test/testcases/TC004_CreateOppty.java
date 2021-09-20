@@ -87,15 +87,8 @@ public class TC004_CreateOppty {
     	createOppty.createOppty();
     	Thread.sleep(5000);
     	String name = createOppty.verifyCreatedOppty();
-    	if(name.toString()==createOppty.oOpptyName.toString())
-    	{
-    		log.info("Opportunity is successfully created and opened on the page: "+name+", "+createOppty.oOpptyName.toString());
-    	}
-    	else
-    	{
-    		log.info("There is a problem with the Opportunity creation: "+name+", "+createOppty.oOpptyName.toString());
-        		
-    	}
+    	assertTrue(name.contains(createOppty.oOpptyName.toString().trim()));
+    	
     }
     
     @AfterClass

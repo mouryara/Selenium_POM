@@ -27,6 +27,7 @@ import utilities.Excel_Reader;
 import java.io.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import static org.openqa.selenium.remote.CapabilityType.*;
@@ -290,11 +291,45 @@ public class CommonFunction {
     	select.selectByVisibleText(dropDownValue);
     }
     
+    public void getElementListFromComboBox(By locator, String dropDownValue)
+    {
+    	String valueToSelect=dropDownValue;
+    	List<WebElement> listValues = driver.findElements(locator);
+    	int cnt=listValues.size();
+    	int i=0;
+    	listValues.toArray();
+    	System.out.println("Size of the List is: "+ cnt +"of values in array: "+ listValues.toArray());
+    	
+    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+    	
+    	for(i=0;i<=cnt;i++)
+    	{
+    		if(listValues.toArray()[i]==valueToSelect)
+    		{
+    			executor.executeScript("arguments[0].click();",listValues.toArray()[i]);
+    			
+    		}
+    		else
+    		{
+    			
+    		}
+    		
+    	}
+    	
+    }
+    
     // for scrolling to the element on the page when element is not visible
     public void scrollToElement(By locator)
     {
     	
     	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
+    }
+    
+    public void scrollToPickListValue(By locator, String element)
+    {
+    	String st=element;
+    	driver.findElement(locator).sendKeys(st);
+    	((JavascriptExecutor)driver).executeScript("window.scrollTo", driver.findElement(locator));
     }
 
     /*

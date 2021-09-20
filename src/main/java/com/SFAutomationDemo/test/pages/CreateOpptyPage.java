@@ -3,6 +3,9 @@ package com.SFAutomationDemo.test.pages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 import java.util.Random;
 
 import com.SFAutomationDemo.test.common.CommonFunction;
@@ -65,18 +68,39 @@ public class CreateOpptyPage extends CommonFunction{
       private static final By AcctNameFromResult=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-layout-lookup/lightning-lookup/lightning-lookup-desktop/lightning-grouped-combobox/div[1]/div/lightning-base-combobox/div/div[2]/ul/li");
       
       private static final By OpptyStage = By.xpath("//lightning-combobox[@class='slds-form-element slds-form-element_stacked']//input[@role='combobox']");
-      private static final By opptyStgList=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div[1]/lightning-base-combobox/div/div[2]");
-      private static final By stgListOptionProspect=By.xpath("//span[@title='Prospecting']");
+      //private static final By opptyStgList=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div[1]/lightning-base-combobox/div/div[2]");
+      //public static final By opptyStgList=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[1]/input");
+      public static final By opptyStgList=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]");
+      
+      //private static final By stgListOptionProspect=By.xpath("//span[@title='Prospecting']");
+      private static final By stgListOptionProspecting=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[2]/span[2]/span");
+      private static final By stgListOptionQualification=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[3]/span[2]/span");
+      private static final By stgListOptionNeedAnalysis=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[4]/span[2]/span");
+      private static final By stgListOptionValueProposition=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[5]/span[2]/span");
+      private static final By stgListOptionIdDecisionMakers=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[6]/span[2]/span");
+      private static final By stgListOptionPerceptionAnalysis=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[7]/span[2]/span");
+      private static final By stgListOptionProposalPriceQuote=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[8]/span[2]/span");
+      private static final By stgListOptionNegotiationReview=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[9]/span[2]/span");
+      private static final By stgListOptionClosedWon=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[10]/span[2]/span");
+      private static final By stgListOptionClosedLost=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[4]/slot/force-record-layout-item[2]/div/span/slot/slot/sfa-input-stage-name/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[11]/span[2]/span");
       
       
       private static final By OpptyType = By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[5]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div[1]/lightning-base-combobox/div/div[1]/input");
       private static final By OpptyTypeList = By.xpath("//force-record-layout-row[5]//slot[1]//force-record-layout-item[1]//div[1]//span[1]//slot[1]//slot[1]//force-record-picklist[1]//force-form-picklist[1]//lightning-picklist[1]//lightning-combobox[1]//div[1]//lightning-base-combobox[1]//div[1]//div[2]");
       private static final By oTypeNewCustomer=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[5]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div[1]/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[5]");
+      private static final By oTypeExistingCustomerUpgrade=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[5]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div[1]/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[2]/span[2]/span");
+      private static final By oTypeExistingCustomerReplacement=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[5]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[3]/span[2]/span");
+      private static final By oTypeExistingCustomerDowngrade=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[5]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[4]/span[2]/span");
       
+                
       private static final By OpptyLeadSource = By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[6]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[1]");
       private static final By opptyLeadSrcList = By.xpath("//force-record-layout-row[6]//slot[1]//force-record-layout-item[1]//div[1]//span[1]//slot[1]//slot[1]//force-record-picklist[1]//force-form-picklist[1]//lightning-picklist[1]//lightning-combobox[1]//div[1]//lightning-base-combobox[1]//div[1]//div[2]");
       private static final By opptyLeadSrcValOther= By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[6]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[6]/span[2]/span");
-            
+      private static final By opptyLeadSrcValWeb=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[6]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[2]/span[2]/span");
+      private static final By opptyLeadSrcValPhoneInquiry=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[6]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[3]/span[2]/span");
+      private static final By opptyLeadSrcValPartnerReferral=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[6]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[4]/span[2]/span");
+      private static final By opptyLeadSrcValPurchasedList=By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[6]/slot/force-record-layout-item[1]/div/span/slot/slot/force-record-picklist/force-form-picklist/lightning-picklist/lightning-combobox/div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[5]/span[2]/span");
+
       private static final By OpptyProbability = By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/div/records-lwc-record-layout/forcegenerated-detailpanel_opportunity___0125f0000008sk6aai___full___create___recordlayout2/force-record-layout-block/slot/force-record-layout-section[1]/div/div/div/slot/force-record-layout-row[5]/slot/force-record-layout-item[2]/div/span/slot/slot/lightning-input/div/input");
       private static final By OpptySavebtn = By.xpath("/html/body/div[4]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/force-form-footer/div/div/div/runtime_platform_actions-actions-ribbon/ul/li[3]/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-lwc-headless/slot[1]/slot/lightning-button/button");
       private static final By OpptyCancelbtn = By.xpath("//*[@id=\"content_1615:0\"]/div/div/div[1]/records-modal-lwc-detail-panel-wrapper/records-record-layout-event-broker/slot/records-lwc-detail-panel/records-base-record-form/div/div/div/force-form-footer/div/div/div/runtime_platform_actions-actions-ribbon/ul/li[1]/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-lwc-headless/slot[1]/slot/lightning-button/button");
@@ -130,6 +154,7 @@ public class CreateOpptyPage extends CommonFunction{
       	
       	//selectValueFromDropDownList(AcctName,oAcctName);
       	clickOnLocator(OpptyStage);
+      	
       	if(checkPageExistence(opptyStgList)==true)
       	{
       		log.info("Opportunity Stage Picklist expanded");
@@ -138,8 +163,13 @@ public class CreateOpptyPage extends CommonFunction{
       	{
       		log.info("Opportunity Stage Picklist isn't visible");
       	}
-      	clickOnLocator(stgListOptionProspect);
-      	log.info("Stage is selected");
+      	
+      	//clickOnLocator(stgListOptionProspecting);
+      	selectOpptyStage();
+      	//getElementListFromComboBox(opptyStgList,oStage);
+      	
+      	//log.info("Stage is selected");
+      	
       	//selectValueFromPickList(opptyStgList,oStage);
       	
       	clickOnLocator(OpptyType);
@@ -151,9 +181,8 @@ public class CreateOpptyPage extends CommonFunction{
       	{
       		log.info("Opportunity Type List isn't visible");
       	}
-      	clickOnLocator(oTypeNewCustomer);
-      	log.info("Type is selected");
-      	//selectValueFromPickList(OpptyTypeList,oType);
+      	
+      	selectOpptyType();
       	
       	scrollToElement(OpptyLeadSource);
       	clickOnLocator(OpptyLeadSource);
@@ -165,14 +194,338 @@ public class CreateOpptyPage extends CommonFunction{
       	{
       		log.info("Lead Source List isn't visible");
       	}
-      	clickOnLocator(opptyLeadSrcValOther);
-      	log.info("Lead Source value selected");
-      	//selectValueFromPickList(OpptyLeadSource,oLeadSrc);
       	
+      	selectOpptyLeadSrc();
+      	      	
       	fillValuesInTextBox1(OpptyProbability,oProbability);   	
       	log.info( "Opportunity data entries Completed" );
       }
       
+      private void selectOpptyStage()
+      {
+
+        	switch(oStage) {
+        		
+        		case "Prospecting":
+        			
+        			if(checkPageExistence(stgListOptionProspecting)==true)
+        			{
+        				clickOnLocator(stgListOptionProspecting);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionProspecting);        				
+        			}
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Qualification":
+        			
+        			if(checkPageExistence(stgListOptionQualification)==true)
+        			{
+        				clickOnLocator(stgListOptionQualification);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionQualification);        				
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Need Analysis":
+        			
+        			if(checkPageExistence(stgListOptionNeedAnalysis)==true)
+        			{
+        				clickOnLocator(stgListOptionNeedAnalysis);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionNeedAnalysis);        				
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Value Proposition":
+        			
+        			if(checkPageExistence(stgListOptionValueProposition)==true)
+        			{
+        				clickOnLocator(stgListOptionValueProposition);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionValueProposition);        				
+        			}
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Id. Decision Makers":
+        			
+        			if(checkPageExistence(stgListOptionIdDecisionMakers)==true)
+        			{
+        				clickOnLocator(stgListOptionIdDecisionMakers);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionIdDecisionMakers);        				
+        			}
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Perception Analysis":
+        			
+        			if(checkPageExistence(stgListOptionPerceptionAnalysis)==true)
+        			{
+        				clickOnLocator(stgListOptionPerceptionAnalysis);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionPerceptionAnalysis);
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Proposal/Price Quote":
+        			
+        			if(checkPageExistence(stgListOptionProposalPriceQuote)==true)
+        			{
+        				clickOnLocator(stgListOptionProposalPriceQuote);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionProposalPriceQuote);        				
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Negotiation/Review":
+        			
+        			if(checkPageExistence(stgListOptionNegotiationReview)==true)
+        			{
+        				clickOnLocator(stgListOptionNegotiationReview);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionNegotiationReview);        				
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Closed Won":
+        			
+        			if(checkPageExistence(stgListOptionClosedWon)==true)
+        			{
+        				clickOnLocator(stgListOptionClosedWon);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionClosedWon);        				
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        			
+        		case "Closed Lost":
+        			
+        			if(checkPageExistence(stgListOptionClosedLost)==true)
+        			{
+        				clickOnLocator(stgListOptionClosedLost);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyStgList,oStage);
+        				clickOnLocator(stgListOptionClosedLost);        				
+        			}
+        			
+        			log.info("Stage is selected as :"+oStage);
+        			break;
+        	}
+      }
+      
+      private void selectOpptyType()
+      {
+
+        	switch(oType) {
+        		
+        		case "New Customer":
+        			
+        			if(checkPageExistence(oTypeNewCustomer)==true)
+        			{
+        				clickOnLocator(oTypeNewCustomer);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(OpptyTypeList,oType);
+        				clickOnLocator(stgListOptionProspecting);        				
+        			}
+        			log.info("Type is selected as :"+oType);
+        			break;
+        			
+        		case "Existing Customer - Upgrade":
+        			
+        			if(checkPageExistence(oTypeExistingCustomerUpgrade)==true)
+        			{
+        				clickOnLocator(oTypeExistingCustomerUpgrade);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(OpptyTypeList,oType);
+        				clickOnLocator(stgListOptionQualification);        				
+        			}
+        			
+        			log.info("Type is selected as :"+oType);
+        			break;
+        			
+        		case "Existing Customer - Replacement":
+        			
+        			if(checkPageExistence(oTypeExistingCustomerReplacement)==true)
+        			{
+        				clickOnLocator(oTypeExistingCustomerReplacement);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(OpptyTypeList,oType);
+        				clickOnLocator(oTypeExistingCustomerReplacement);        				
+        			}
+        			
+        			log.info("Type is selected as :"+oType);
+        			break;
+        			
+        		case "Existing Customer - Downgrade":
+        			
+        			if(checkPageExistence(oTypeExistingCustomerDowngrade)==true)
+        			{
+        				clickOnLocator(oTypeExistingCustomerDowngrade);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(OpptyTypeList,oType);
+        				clickOnLocator(oTypeExistingCustomerDowngrade);        				
+        			}
+        			log.info("Type is selected as :"+oType);
+        			break;
+        		
+        	}        	
+		
+      }
+      
+      
+      private void selectOpptyLeadSrc()
+      {
+
+        	switch(oLeadSrc) {
+        		
+        		case "Web":
+        			
+        			if(checkPageExistence(opptyLeadSrcValWeb)==true)
+        			{
+        				clickOnLocator(opptyLeadSrcValWeb);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyLeadSrcList,oLeadSrc);
+        				clickOnLocator(opptyLeadSrcValWeb);        				
+        			}
+        			log.info("Lead Source is selected as :"+oLeadSrc);
+        			break;
+        			
+        		case "Phone Inquiry":
+        			
+        			if(checkPageExistence(opptyLeadSrcValPhoneInquiry)==true)
+        			{
+        				clickOnLocator(opptyLeadSrcValPhoneInquiry);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyLeadSrcList,oLeadSrc);
+        				clickOnLocator(opptyLeadSrcValPhoneInquiry);        				
+        			}
+        			
+        			log.info("Lead Source is selected as: "+oLeadSrc);
+        			break;
+        			
+        		case "Partner Referral":
+        			
+        			if(checkPageExistence(opptyLeadSrcValPartnerReferral)==true)
+        			{
+        				clickOnLocator(opptyLeadSrcValPartnerReferral);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyLeadSrcList,oLeadSrc);
+        				clickOnLocator(opptyLeadSrcValPartnerReferral);        				
+        			}
+        			
+        			log.info("Lead Source is selected as: "+oLeadSrc);
+        			break;
+        			
+        		case "Purchased List":
+        			
+        			if(checkPageExistence(opptyLeadSrcValPurchasedList)==true)
+        			{
+        				clickOnLocator(opptyLeadSrcValPurchasedList);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyLeadSrcList,oLeadSrc);
+        				clickOnLocator(opptyLeadSrcValPurchasedList);        				
+        			}
+        			log.info("Lead Source is selected as : "+oLeadSrc);
+        			break;
+        			
+        		case "Other":
+        			
+        			if(checkPageExistence(opptyLeadSrcValOther)==true)
+        			{
+        				clickOnLocator(opptyLeadSrcValOther);
+        			}
+        			else
+        			{
+        				log.info("Element not visible, trying to scroll down");
+        				scrollToPickListValue(opptyLeadSrcList,oLeadSrc);
+        				clickOnLocator(opptyLeadSrcValOther);        				
+        			}
+        			log.info("Lead Source is selected as: "+oLeadSrc);
+        			break;
+        			
+        		
+        	}
+        	
+		
+      }
+      
+
       public boolean isCreateOpptyPopupPresent(){
           log.info( "Checking if Create Opportunity Popup is present." );
           return checkPageExistence(FormTitle);
@@ -244,6 +597,17 @@ public class CreateOpptyPage extends CommonFunction{
   	   return opptyNm;
      }
      
+		/*
+		 * public boolean compareOpptyNm() { String ActopptyNm =
+		 * getWebElement(OpptyNameLabel).getText().toString().trim();
+		 * if(ActopptyNm==oOpptyName.toString().trim()) {
+		 * log.info("Opportunity Details page Opens after Oppty creation"); return true;
+		 * } else {
+		 * log.info("Propblem with Opportunity Details page opening, Name found as "
+		 * +ActopptyNm+" and "+oOpptyName); return false; }
+		 * 
+		 * }
+		 */     
 
 }
 
