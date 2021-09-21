@@ -157,6 +157,7 @@ public class CommonFunction {
                 DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("test-type");
+                options.addArguments("start-maximized");
                 chromeCapabilities.setCapability("chrome.binary","");
                 chromeCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
                 chromeCapabilities.setPlatform(Platform.WINDOWS);
@@ -346,7 +347,7 @@ public class CommonFunction {
      * @throws IOException
      * @throws InterruptedException
      */
-    public LoginPage clickSignInButton() throws IOException, InterruptedException {
+    public LoginPage clickLoginButton() throws IOException, InterruptedException {
 
         //WebDriver driver;
         driver = invokeApplication();

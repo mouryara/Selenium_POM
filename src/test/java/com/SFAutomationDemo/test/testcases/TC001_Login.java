@@ -40,7 +40,7 @@ public class TC001_Login {
     public void setUp() throws IOException, InterruptedException {
 
         commonFunction = new CommonFunction(driver);
-        loginPage = commonFunction.clickSignInButton();
+        loginPage = commonFunction.clickLoginButton();
         //sfHomePage = loginPage.successFulLogin();
         DOMConfigurator.configure("src/test/log4j.xml");
     }

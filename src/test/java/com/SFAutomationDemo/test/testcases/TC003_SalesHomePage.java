@@ -42,7 +42,7 @@ public class TC003_SalesHomePage {
     public void setUp() throws IOException, InterruptedException {
 
         commonFunction = new CommonFunction(driver);
-        loginPage = commonFunction.clickSignInButton();
+        loginPage = commonFunction.clickLoginButton();
         home=loginPage.successFulLogin();
         home.launchAppMenu();
         Thread.sleep(5000);

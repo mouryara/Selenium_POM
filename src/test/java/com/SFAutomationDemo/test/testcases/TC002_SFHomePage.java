@@ -37,7 +37,7 @@ public class TC002_SFHomePage {
         DOMConfigurator.configure( "src/test/log4j.xml" );
         commonFunction = new CommonFunction(driver);
         log.info( "TC for Launching Sales Application started" );
-        loginPage = commonFunction.clickSignInButton();
+        loginPage = commonFunction.clickLoginButton();
         
         home = loginPage.successFulLogin();
         
